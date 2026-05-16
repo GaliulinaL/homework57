@@ -13,19 +13,17 @@ const UserForm: React.FC<Props> = ({onSubmit}) => {
         role: 'user',
     });
 
-    // Универсальный обработчик для текстовых полей и селекта
     const onInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
         const {name, value} = e.target;
         setUser((prev) => ({...prev, [name]: value}));
     };
 
-    // Отдельный обработчик для чекбокса (как просили в ТЗ)
     const onCheckboxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const {name, checked} = e.target;
         setUser((prev) => ({...prev, [name]: checked}));
     };
 
-    const onFormSubmit = (e: React.FormEvent) => {
+    const onFormSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         onSubmit({
             ...user,
